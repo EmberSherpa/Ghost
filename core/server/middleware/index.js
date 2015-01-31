@@ -334,11 +334,13 @@ setupMiddleware = function (blogAppInstance, adminApp) {
     blogApp.use('/ghost', adminApp);
 
     // Set up Frontend routes
-    blogApp.use(routes.frontend());
+
+    // ember-cli-ghost-app hack: removes frontend views
+    // blogApp.use(routes.frontend());
 
     // ### Error handling
     // 404 Handler
-    blogApp.use(errors.error404);
+    // blogApp.use(errors.error404);
 
     // 500 Handler
     blogApp.use(errors.error500);
