@@ -1,6 +1,6 @@
 {
     "name"        : "ghost",
-    "version"     : "0.5.8",
+    "version"     : "0.5.8+ember-cli-ghost-app-hack",
     "description" : "Just a blogging platform.",
     "author"      : "Ghost Foundation",
     "homepage"    : "http://ghost.org",
