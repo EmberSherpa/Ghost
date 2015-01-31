@@ -50,8 +50,14 @@ middleware = {
             return a;
         });
 
+        // ember-cli-ghost-app hack: removes protection from posts &
+        function isPostsAPI(path) {
+            return /^\/ghost\/api\/v0\.1\/posts(?:\/(?=$))?$/i.test(path) ||
+                /^\/ghost\/api\/v0\.1\/posts\/([^\\/]+?)(?:\/(?=$))?$/i.test(path);
+        }
         if (subPath.indexOf('/ghost/api/') === 0
-            && path.indexOf('/ghost/api/v0.1/authentication/') !== 0) {
+            && path.indexOf('/ghost/api/v0.1/authentication/') !== 0
+            && !isPostsAPI(path)) {
             return passport.authenticate('bearer', {session: false, failWithError: true},
                 function (err, user, info) {
                     if (err) {
